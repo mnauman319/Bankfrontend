@@ -11,15 +11,19 @@
     <div class="accounts">
         <div class="account-accordian-container">
             <mat-accordion class="account-accordian" multi>
-                <mat-expansion-panel>
+                <mat-expansion-panel *ngFor="let account of accounts">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            account name - balance
+                            {{account.name}} - {{account.balance}}
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <div>transaction1</div>
                     <div>transaction2</div>
                     <div>transaction3</div>
+                    <div id="update-account">
+                        <button (click)="updateAccount($event)" value="{{account.aId}}">Deposit</button>
+                        <button (click)="updateAccount($event)" value="{{account.aId}}">Withdraw</button>
+                    </div>
                 </mat-expansion-panel>
             </mat-accordion>
         </div>
