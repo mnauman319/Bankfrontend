@@ -6,19 +6,20 @@
         <h2>Login</h2>
         <mat-form-field class="example-full-width">
             <mat-label>Username or Email</mat-label>
-            <input matInput placeholder="Matt99">
+            <input matInput [(ngModel)] = "username" placeholder="Matt99">
             <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput type="password" placeholder="password123">
+            <input matInput [(ngModel)] = "password" type="password" placeholder="password123">
             <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
-        <button mat-raised-button color="primary">Login</button>
-        <button mat-button>Forgot Password</button>
+        <button mat-raised-button color="primary" (click)="login()">Login</button>
+        <button mat-button >Forgot Password</button>
         
     </div>
-    <div class="left-container">
-    </div>
+    <div class="left-container"></div>
     <div class="right-container"></div>
+    <div class="white-space1"></div>
+    <div class="white-space2"></div>
 </div>
