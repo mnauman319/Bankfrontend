@@ -1,1 +1,28 @@
-<h1>homepage</h1>
+<div class="container">
+    <div class="header">
+        <div><h1>Simple Bank </h1></div>
+        <div><h4 (click) = "logOut()">Log Out</h4></div>
+    </div>
+    <div class="greeting">
+        <h1 *ngIf="dayPeriod ==-1">Good Morning, {{user.getUsername()}}</h1>
+        <h1 *ngIf="dayPeriod == 0">Good Afternoon, {{user.getUsername()}}</h1>
+        <h1 *ngIf="dayPeriod == 1">Good Evening, {{user.getUsername()}}</h1>
+    </div>
+    <div class="accounts">
+        <div class="account-accordian-container">
+            <mat-accordion class="account-accordian" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            account name - balance
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div>transaction1</div>
+                    <div>transaction2</div>
+                    <div>transaction3</div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
