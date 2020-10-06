@@ -19,7 +19,7 @@
         padding: 3vh 4vw;
         
         h1{
-            font-size: 1.4vw;
+            font-size: 1.7vw;
         }
         h4{
             font-size: 0.8vw;
@@ -40,6 +40,21 @@
     grid-row: 3/9;
     .account-accordian-container{
         margin: 5vh 15vw;
+        table{
+            border-spacing: 0px;
+            th,tr{
+                text-align: left;
+                width: 12%;
+                margin: 0;
+            }
+            tr:hover {background-color: #ddd;}
+            td{
+                border: 1px solid black;
+                padding: 8px;
+                margin: 0;
+            }
+            
+        }
         #update-account{
             padding-top: 2vh;
             display: flex;

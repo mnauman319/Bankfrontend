@@ -10,11 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-
+import { TransactionService } from './services/transaction.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { DollarsPipe } from './pipes/dollars.pipe';
 
 
 
@@ -22,7 +23,8 @@ import { LoginComponent } from './components/login/login.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DollarsPipe
   ],
   imports: [
     AppRoutingModule,
@@ -35,7 +37,7 @@ import { LoginComponent } from './components/login/login.component';
     MatIconModule,
     MatInputModule
   ],
-  providers: [AccountService,CustomerService],
+  providers: [AccountService, CustomerService, TransactionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

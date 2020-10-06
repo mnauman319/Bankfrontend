@@ -11,7 +11,7 @@ export class AccountService {
   
   
   constructor(private httpClient:HttpClient, private cserv:CustomerService) { }
-  cId:number = this.cserv.loggedInCustomer.getCId();
+  cId:number = this.cserv.loggedInCustomer.cId;
   baseUrl:string = environment.baseUrl + `/customers/${this.cId}/accounts`;
   async getAllAccounts():Promise<Account[]>{
     return await this.httpClient.get<Account[]>(`${this.baseUrl}`).toPromise();
@@ -35,8 +35,7 @@ export class AccountService {
     return await this.httpClient.put<Account>(`${this.baseUrl}`,account).toPromise();
   }
   async deleteAccount(aId:number):Promise<boolean>{
-    return await this.httpClient.delete<boolean>(`${this.baseUrl}/aId`).toPromise();
+    return await this.httpClient.delete<boolean>(`${this.baseUrl}/${aId}`).toPromise();
   }
-
   
 }
