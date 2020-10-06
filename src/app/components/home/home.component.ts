@@ -1,8 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AccountService } from '../../services/account.service';
+import { Account } from '../../models/account';
+import { Component, OnInit, ViewChild, ɵALLOW_MULTIPLE_PLATFORMS } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
+import { Transaction } from '../../models/transaction';
+import { __await } from 'tslib';
+import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
   selector: 'app-home',
@@ -19,21 +24,43 @@ export class HomeComponent implements OnInit {
   //night is between 5pm - 5am (not including 5am)
   dayPeriod;
 
-  constructor(private cserv:CustomerService, private router:Router) {
+  constructor(private cserv:CustomerService, private router:Router, private aserv:AccountService, private tserv:TransactionService) {
     setInterval(()=>{
       this.now = new Date();
       this.dayPeriod = (this.now.getHours() < 11 && this.now.getHours() >= 5) ? -1 : (this.now.getHours() < 17) ? 0 : 1;
     },6000)
    }
+
   user:Customer = this.cserv.loggedInCustomer;
-  
+  accounts:Account[];
+  currentAccount:Account;
+  transactions:Transaction[];
+
   ngOnInit(): void {
     this.now = new Date();
     this.dayPeriod = (this.now.getHours() < 11 && this.now.getHours() >= 5) ? -1 : (this.now.getHours() < 17) ? 0 : 1;
-    this.user = new Customer(1,'DanTheMan','password',false)
+    this.getAccountsAndTransactions();
+  }
+  
+  async getAccountsAndTransactions(){
+    this.accounts = await this.aserv.getAllAccounts();
+    this.transactions = await this.tserv.getAllTransactions();
+  }
+  updateAccount(event){
+    let insertionType = (event.target.innerText==='Deposit') ? 1 : (event.target.innerText==='Withdraw') ? -1 : 0;
+    let balanceChange = 400;
+    let aId = event.target.value;
+    let account:Account = this.accounts.find((a) => a.aId == aId);
+    console.log(account);
+    account.balance += balanceChange*insertionType;
+    console.log(account);
   }
 
   logOut(){
     this.router.navigateByUrl('/login')
+  }
+  checkTransaction(event:Event){
+    console.log("test1");
+    
   }
 }
