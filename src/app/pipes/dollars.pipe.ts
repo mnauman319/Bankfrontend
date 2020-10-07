@@ -16,7 +16,8 @@ export class DollarsPipe implements PipeTransform {
         idx =0;
       }
     }
-    tempNum[0] = '$' + tempNum[0];
+    
+    tempNum[0] = (value>=0) ?'$' + tempNum[0] : tempNum[0] + '$';
     
     return tempNum.join('');
   }

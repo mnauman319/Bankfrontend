@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
   accounts:Account[];
   currentAccount:Account;
   transactions:Transaction[];
+  balanceChange:number;
+  showModal:boolean = false;
 
   ngOnInit(): void {
     this.now = new Date();
@@ -46,21 +48,15 @@ export class HomeComponent implements OnInit {
     this.accounts = await this.aserv.getAllAccounts();
     this.transactions = await this.tserv.getAllTransactions();
   }
-  updateAccount(event){
+  async updateAccount(event){
     let insertionType = (event.target.innerText==='Deposit') ? 1 : (event.target.innerText==='Withdraw') ? -1 : 0;
-    let balanceChange = 400;
-    let aId = event.target.value;
-    let account:Account = this.accounts.find((a) => a.aId == aId);
-    console.log(account);
-    account.balance += balanceChange*insertionType;
-    console.log(account);
+    let account:Account = this.currentAccount;
+    account.balance += this.balanceChange*insertionType;
+    await this.aserv.updateAccount(account)
+    this.getAccountsAndTransactions();
+    this.showModal = false;
   }
-
   logOut(){
     this.router.navigateByUrl('/login')
-  }
-  checkTransaction(event:Event){
-    console.log("test1");
-    
   }
 }

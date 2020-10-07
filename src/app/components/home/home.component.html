@@ -34,13 +34,43 @@
                         </table>
                     </div>
                     <div id="update-account">
-                        <button (click)="updateAccount($event)" value="{{account.aId}}">Deposit</button>
-
-                        <button (click)="updateAccount($event)" value="{{account.aId}}">Withdraw</button>
+                        <button (click)="showModal=true" (click)="currentAccount=account" value="{{account.aId}}">Transfer Funds</button>
                     </div>
                 </mat-expansion-panel>
             </mat-accordion>
         </div>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+        <div>
+            </div>
+                <div class="footer-logo-container">
+                    <h2>Simple Bank</h2>
+                    <h4>Copyright Simple Bank 2020</h4>
+                </div>
+                <div class="address-container">
+                    <h4>16014 Unreal Rd.</h4>
+                    <h4>Puedam Park, TX</h4>
+                    <h4>93025</h4>
+                </div>
+                <div class="contact-info-container">
+                    <h3>(325) 306-8621</h3>
+                    <h3>Support@simplebank.com</h3>
+                </div>
+            <div>
+        </div>
+    </div>
+</div>
+<div class="transfer-funds-modal" *ngIf="showModal">
+    <span (click)="showModal=false">&times;</span>
+    <div>
+        <div>
+            <mat-label>Amount: </mat-label>
+            <input matInput type="number" [(ngModel)]="balanceChange">
+        </div>
+        <div style="flex-direction: row;">
+            <button (click)="updateAccount($event)">Deposit</button>
+            <button (click)="updateAccount($event)" style="margin-left: 1vw;">Withdraw</button>
+        </div>
+        
+    </div>
 </div>

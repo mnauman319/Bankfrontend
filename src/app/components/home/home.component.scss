@@ -17,9 +17,10 @@
     div{
         text-align: center;
         padding: 3vh 4vw;
-        
+        color: chocolate;
         h1{
             font-size: 1.7vw;
+            
         }
         h4{
             font-size: 0.8vw;
@@ -85,4 +86,59 @@
 .footer{
     grid-row: 9/11;
     background-color: gainsboro;
+    display: flex;
+    justify-content: space-between;
+    div{
+        padding-top: 2vw;
+    }
+    img{
+        width: 2vw;
+        height: 2vh;
+    }
+}
+
+.transfer-funds-modal{
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    span{
+        position: absolute;
+        top: 36%;
+        left: 58.5%;
+        z-index: 20;
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        &:hover{
+          cursor: pointer;
+        }
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 25%;
+        width: 25%;
+        top: 35%;
+        left: 35%;
+        background-color: 	#232B2B;
+        div{
+            color: #DC3D24;
+            input{
+                width: 7.5vw;
+            }
+            button{
+                background-color: #FFFFFF;
+                color: #DC3D24;
+                height: 2.5vh;
+                width: 4vw;
+                -webkit-border-radius: 28;  -moz-border-radius: 28;  border-radius: 28px;
+            }
+        }
+        
+    }
 }
