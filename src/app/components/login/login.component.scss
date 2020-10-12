@@ -18,12 +18,12 @@
     background-color: whitesmoke;
     text-align: center;
     h1{
-        margin-top: 10%;
+        margin-top: 14vh;
     }
 }
 .input-container{
     grid-column: 2/5;
-    grid-row: 7/16;
+    grid-row: 7/19;
     background-color: ghostwhite;
     display: flex;
     flex-direction: column;
@@ -36,10 +36,24 @@
         margin-top: 2%;
     }
 }
-.white-space1{
+.footer{
+    display: flex;
+    justify-content: space-between;
     grid-column: 2/5;
-    grid-row: 16/21;
+    grid-row: 18/21;
     background-color: #E8E8E8;
+    div{
+        min-height: fit-content;
+        padding-top: 2vh;
+        h2{
+            font-size: 1.5vw;
+        }
+        h3{
+            font-size: 1vw;
+        }h4{
+            font-size: 0.8vw;
+        }
+    }
 }
 .white-space2{
     grid-column: 2/5;

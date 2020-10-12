@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 export class CustomerService {
   
   baseUrl:string = environment.baseUrl;
-  loggedInCustomer:Customer = new Customer(1,"DanTheMan","password",false);
+  loggedInCustomer:Customer;
 
   constructor(private httpClient:HttpClient) { }
   async loginCustomer(username:string,password:string):Promise<Customer>{
